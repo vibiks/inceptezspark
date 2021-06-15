@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.inceptez</groupId>
+  <artifactId>InceptezSparkMaven25</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <packaging>jar</packaging>
+  
+  <properties>
+  <sparkversion>2.4.7</sparkversion>
+  <scalav>2.11.11</scalav>
+  </properties>
+  
+  <dependencies>
+  
+  <!-- <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.22</version>
+  </dependency>  --> 
+  
+  <dependency>
+  <groupId>org.scala-lang</groupId>
+    <artifactId>scala-library</artifactId>
+    <version>${scalav}</version>
+  </dependency>
+  
+  <dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-core_2.11</artifactId>
+    <version>${sparkversion}</version>
+    <scope>provided</scope>
+</dependency> 
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-sql_2.11</artifactId>
+    <version>${sparkversion}</version>
+    <scope>provided</scope>
+</dependency>
+   
+   <dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-streaming_2.11</artifactId>
+    <version>${sparkversion}</version>
+    <scope>provided</scope>
+</dependency>
+   
+   <!-- Phoenix dependencies -->
+   <dependency>
+    <groupId>org.apache.phoenix</groupId>
+    <artifactId>phoenix-spark</artifactId>
+    <version>4.11.0-HBase-0.98</version>
+   </dependency>
+<dependency>
+    <groupId>org.apache.phoenix</groupId>
+    <artifactId>phoenix-core</artifactId>
+    <version>4.11.0-HBase-0.98</version>
+   </dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.22</version>
+</dependency>
+
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>9.2-1003-jdbc4</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+    <version>2.4.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-sql-kafka-0-10_2.11</artifactId>
+    <version>2.4.0</version>
+</dependency>
+
+
+
+   		
+  </dependencies>
+  
+  
+  <build>
+  <plugins>
+  
+  <!-- for fatjar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble-all</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+  </plugins>
+  
+  </build>
+  
+  
+</project>
